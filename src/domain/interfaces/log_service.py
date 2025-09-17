@@ -6,3 +6,11 @@ from domain.entity.log import LogEntity
 class ILogService(ABC):
     @abstractmethod
     def generate(self, log: LogEntity) -> LogEntity: ...
+
+
+class IGeoService(ILogService):
+    ...
+
+
+class IUUIDService(ILogService):
+    ...

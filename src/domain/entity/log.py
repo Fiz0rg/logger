@@ -1,12 +1,36 @@
-from dataclasses import dataclass
+from pydantic import BaseModel
+from typing import Optional, TypedDict
+from datetime import datetime
 
-from domain.enum.log import LogLevelEnum
+
+class RawLogDict(TypedDict, total=False):
+    uuid: str
+    message: str 
+    pri: int 
+    facility: str
+    severity: str 
+    request_method: str 
+    uri: str 
+    host: str
+    protocol_version: str
+    nginx_timestamp: int
+    log_timestamp: int
+    ip: str
+    geo: int
 
 
-@dataclass
-class LogEntity:
-    message: str
-    ip: str | None = None
-    uuid: str | None = None
-    geo: dict | None = None
-    logLevel: LogLevelEnum | None = None
+class LogEntity(BaseModel):
+    uuid: Optional[str] = None #+
+    message: str # +
+    pri: int #+
+    facility: str #+
+    severity: str #+
+    request_method: str #+
+    uri: str #+
+    host: str # nginx host +
+    protocol_version: str #+
+    nginx_timestamp: Optional[datetime] = None #+
+    log_timestamp: Optional[datetime] = None #+
+    ip: Optional[str] = None #+
+    geo: Optional[int] = None #+
+    # logLevel: Optional[LogLevelEnum] = None 
