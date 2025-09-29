@@ -1,0 +1,25 @@
+services:
+  kafka:
+    image: apache/kafka-native:latest
+    container_name: kafka
+    ports:
+      - "9092:9092" # для подключения с хоста
+    environment:
+
+      # KRaft mode (без ZooKeeper)
+      KAFKA_NODE_ID: 1
+      KAFKA_PROCESS_ROLES: broker,controller
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_CONTROLLER_QUORUM_VOTERS: $KAFKA_CONTROLLER_QUORUM_VOTERS
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+
+      # Служебный listener для контроллера
+      KAFKA_LISTENERS: $KAFKA_LISTENERS
+      KAFKA_ADVERTISED_LISTENERS: $KAFKA_ADVERTISED_LISTENERS
+
+      # Минимальные настройки для одного брокера
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    
+    env_file:
+      - dev.env
