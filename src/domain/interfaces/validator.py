@@ -3,6 +3,6 @@ from abc import ABC, abstractmethod
 from src.domain.entity.log import LogDict
 
 
-class IEnrichLogUsecase(ABC):
+class ILogValidator(ABC):
     @abstractmethod
-    async def enrich(self, log: str) -> LogDict: ...
+    def is_satisfied(self, log: LogDict) -> tuple[LogDict, bool]: ...

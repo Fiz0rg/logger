@@ -8,6 +8,10 @@ class Settings(BaseSettings):
     ENV: str
     HOST: str
     PORT: int
+
+    KAFKA_HOST: str
+    KAFKA_PORT: str
+
     DEBUG: bool = Field(default=False)
 
     class Config:
@@ -25,4 +29,4 @@ class SettingsDev(Settings):
 
 
 config = dict(prod=SettingsProd, dev=SettingsDev)
-settings: Settings = config[os.environ.get("APP_ENV", "dev").lower()]() # type: ignore
+settings: Settings = config[os.environ.get("APP_ENV", "dev").lower()]()  # type: ignore

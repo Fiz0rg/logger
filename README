@@ -4,6 +4,7 @@ DEVELOP SETTINGS:
 -------------------------- ENV --------------------------------
 
 create in root dir dev.env file for dev mode. Fill in the following gaps:
+
 ENV=LOCAL
 HOST=127.0.0.1
 PORT=8888
@@ -21,3 +22,6 @@ run python app: python3 main.py
 fake test request on localhost: 
 echo '<134>Sep 15 18:25:43 my-nginx-host nginx: 31.28.159.255 client42 admin [15/Sep/2025:18:25:43 +0200] "GET /index.html HTTP/1.1" 200 1024 "-" "Mozilla/5.0"' | nc 127.0.0.1 8888
 
+----------------- DOCKER ------------------------------
+
+docker compose --env-file kafka.env -f docker-compose.yaml up --build
