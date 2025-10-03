@@ -9,3 +9,7 @@ lint:
 .PHONY: pre-commit
 pre-commit:
 	${CMD} pre-commit run --all-files
+
+.PHONY: tests
+tests:
+	pytest tests/ -v -s
