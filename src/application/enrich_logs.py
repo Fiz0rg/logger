@@ -13,7 +13,7 @@ class LogProcessingOrchestrator:
 
     async def execute(self, *, raw_log: str) -> None:
 
-        enriched_log = await self.enricher.enrich(log=raw_log)
+        enriched_log = self.enricher.enrich(log=raw_log)
 
         log, is_valid = self.validator.is_satisfied(log=enriched_log)
 
