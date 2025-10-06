@@ -10,6 +10,6 @@ lint:
 pre-commit:
 	${CMD} pre-commit run --all-files
 
-.PHONY: tests
-tests:
-	pytest tests/ -v -s
+.PHONY: py_tests
+py_tests:
+	cd python_app && pytest tests/ -v -s
