@@ -7,3 +7,9 @@ class BaseError(Exception):
 
 
 class EventBusError(BaseError): ...
+
+
+class DomainError(BaseError): ...
+
+
+class InfraError(BaseError): ...
